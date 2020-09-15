@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDeliveryPricesTable extends Migration
+class CreateRegionsTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $table = 'delivery_prices';
+    public $table = 'regions';
 
     /**
      * Run the migrations.
@@ -20,8 +20,10 @@ class CreateDeliveryPricesTable extends Migration
     public function up()
     {
         Schema::create($this->table, function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('province_id');
+            $table->foreign('province_id')->references('id')->on('provinces')->onDelete('cascade');
+            $table->string('region_name');
             $table->timestamps();
         });
     }

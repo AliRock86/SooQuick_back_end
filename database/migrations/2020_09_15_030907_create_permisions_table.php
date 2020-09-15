@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDriversTable extends Migration
+class CreatePermisionsTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $table = 'drivers';
+    public $table = 'permisions';
 
     /**
      * Run the migrations.
@@ -20,8 +20,8 @@ class CreateDriversTable extends Migration
     public function up()
     {
         Schema::create($this->table, function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+            $table->bigIncrements('id');
+            $table->string('permision_name');
             $table->timestamps();
         });
     }

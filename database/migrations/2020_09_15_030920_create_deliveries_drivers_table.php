@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStatusesTable extends Migration
+class CreateDeliveryDriversTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $table = 'statuses';
+    public $table = 'deliveries_drivers';
 
     /**
      * Run the migrations.
@@ -20,8 +20,11 @@ class CreateStatusesTable extends Migration
     public function up()
     {
         Schema::create($this->table, function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('driver_id');
+            $table->foreign('driver_id')->references('id')->on('drivers')->onDelete('cascade');
+            $table->unsignedBigInteger('order_id');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
             $table->timestamps();
         });
     }
