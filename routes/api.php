@@ -316,3 +316,16 @@ Route::name('partnerships.')->prefix('partnerships')->group(function () {
     Route::delete('/{partnership}', 'PartnershipControllerAPI@destroy')->name('destroy');
 });
 
+/*
+|--------------------------------------------------------------------------
+| DeliveryDrivers endpoints
+|--------------------------------------------------------------------------
+ */
+Route::name('delivery-drivers.')->prefix('delivery-drivers')->group(function () {
+    Route::get('/', 'DeliveryDriversControllerAPI@index')->name('index');
+    Route::post('/', 'DeliveryDriversControllerAPI@store')->name('create');
+    Route::get('/{deliveryDrivers}', 'DeliveryDriversControllerAPI@show')->name('show');
+    Route::patch('/{deliveryDrivers}', 'DeliveryDriversControllerAPI@update')->name('update');
+    Route::delete('/{deliveryDrivers}', 'DeliveryDriversControllerAPI@destroy')->name('destroy');
+});
+

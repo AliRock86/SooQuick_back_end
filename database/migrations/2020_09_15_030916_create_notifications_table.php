@@ -20,8 +20,13 @@ class CreateNotificationsTable extends Migration
     public function up()
     {
         Schema::create($this->table, function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('notification_type_id');
+            $table->foreign('notification_type_id')->references('id')->on('notification_types')->onDelete('cascade');
+            $table->string('notification_title');
+            $table->text('notification_body');
             $table->timestamps();
         });
     }

@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCountriesTable extends Migration
+class CreateStatusTypesTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $table = 'countries';
+    public $table = 'status_types';
 
     /**
      * Run the migrations.
@@ -20,8 +20,8 @@ class CreateCountriesTable extends Migration
     public function up()
     {
         Schema::create($this->table, function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+            $table->bigIncrements('id');
+            $table->string('status_type_name');
             $table->timestamps();
         });
     }

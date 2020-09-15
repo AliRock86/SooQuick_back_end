@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateAddressesTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $table = 'users';
+    public $table = 'addresses';
 
     /**
      * Run the migrations.
@@ -20,8 +20,14 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create($this->table, function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('addressable_id');
+            $table->string('addressable_type');
+            $table->unsignedBigInteger('region_id');
+            $table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
+            $table->string('long')->default(null);
+            $table->string('lat')->default(null);
+            $table->string('address_descraption')->default(null);
             $table->timestamps();
         });
     }

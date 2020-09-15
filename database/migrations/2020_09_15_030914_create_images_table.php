@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOtpsTable extends Migration
+class CreateImagesTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $table = 'otps';
+    public $table = 'images';
 
     /**
      * Run the migrations.
@@ -20,8 +20,10 @@ class CreateOtpsTable extends Migration
     public function up()
     {
         Schema::create($this->table, function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+            $table->bigIncrements('id');
+            $table->string('image_url');
+            $table->unsignedInteger('imageable_id')->nullable();
+            $table->string('imageable_type');
             $table->timestamps();
         });
     }

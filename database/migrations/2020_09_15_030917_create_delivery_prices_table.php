@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePartnershipsTable extends Migration
+class CreateDeliveryPricesTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $table = 'partnerships';
+    public $table = 'delivery_prices';
 
     /**
      * Run the migrations.
@@ -23,10 +23,11 @@ class CreatePartnershipsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('delivery_comp_id');
             $table->foreign('delivery_comp_id')->references('id')->on('delivery_companies')->onDelete('cascade');
-            $table->unsignedBigInteger('merchant_id');
-            $table->foreign('merchant_id')->references('id')->on('merchants')->onDelete('cascade');
-            $table->unsignedBigInteger('status_id');
-            $table->foreign('status_id')->references('id')->on('statuses')->onDelete('cascade');
+            $table->unsignedBigInteger('province_id');
+            $table->foreign('province_id')->references('id')->on('provinces')->onDelete('cascade');
+            $table->integer('delivery_price_value');
+            $table->integer('delivery_price_weight_kilos')->default(0);
+            $table->string('delivery_prices_description')->default(null);
             $table->timestamps();
         });
     }
