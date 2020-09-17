@@ -329,3 +329,42 @@ Route::name('delivery-drivers.')->prefix('delivery-drivers')->group(function () 
     Route::delete('/{deliveryDrivers}', 'DeliveryDriversControllerAPI@destroy')->name('destroy');
 });
 
+/*
+|--------------------------------------------------------------------------
+| Instruction endpoints
+|--------------------------------------------------------------------------
+ */
+Route::name('instructions.')->prefix('instructions')->group(function () {
+    Route::get('/', 'InstructionControllerAPI@index')->name('index');
+    Route::post('/', 'InstructionControllerAPI@store')->name('create');
+    Route::get('/{instruction}', 'InstructionControllerAPI@show')->name('show');
+    Route::patch('/{instruction}', 'InstructionControllerAPI@update')->name('update');
+    Route::delete('/{instruction}', 'InstructionControllerAPI@destroy')->name('destroy');
+});
+
+/*
+|--------------------------------------------------------------------------
+| OrderInstruction endpoints
+|--------------------------------------------------------------------------
+ */
+Route::name('order-instructions.')->prefix('order-instructions')->group(function () {
+    Route::get('/', 'OrderInstructionControllerAPI@index')->name('index');
+    Route::post('/', 'OrderInstructionControllerAPI@store')->name('create');
+    Route::get('/{orderInstruction}', 'OrderInstructionControllerAPI@show')->name('show');
+    Route::patch('/{orderInstruction}', 'OrderInstructionControllerAPI@update')->name('update');
+    Route::delete('/{orderInstruction}', 'OrderInstructionControllerAPI@destroy')->name('destroy');
+});
+
+/*
+|--------------------------------------------------------------------------
+| OrderAcation endpoints
+|--------------------------------------------------------------------------
+ */
+Route::name('order-acations.')->prefix('order-acations')->group(function () {
+    Route::get('/', 'OrderAcationControllerAPI@index')->name('index');
+    Route::post('/', 'OrderAcationControllerAPI@store')->name('create');
+    Route::get('/{orderAcation}', 'OrderAcationControllerAPI@show')->name('show');
+    Route::patch('/{orderAcation}', 'OrderAcationControllerAPI@update')->name('update');
+    Route::delete('/{orderAcation}', 'OrderAcationControllerAPI@destroy')->name('destroy');
+});
+

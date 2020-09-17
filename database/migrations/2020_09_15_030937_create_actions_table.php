@@ -20,8 +20,9 @@ class CreateActionsTable extends Migration
     public function up()
     {
         Schema::create($this->table, function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+            $table->bigIncrements('id');
+            $table->string('action_name');
+            $table->string('action_name_ar');
             $table->timestamps();
         });
     }

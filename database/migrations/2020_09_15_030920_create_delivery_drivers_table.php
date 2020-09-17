@@ -10,7 +10,7 @@ class CreateDeliveryDriversTable extends Migration
      * Schema table name to migrate
      * @var string
      */
-    public $table = 'deliveries_drivers';
+    public $table = 'delivery_drivers';
 
     /**
      * Run the migrations.

@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCountriesTable extends Migration
+class CreateInstructionsTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $table = 'countries';
+    public $table = 'instructions';
 
     /**
      * Run the migrations.
@@ -21,8 +21,8 @@ class CreateCountriesTable extends Migration
     {
         Schema::create($this->table, function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('country_name');
-            $table->string('country_name_ar');
+            $table->string('instruction_name');
+            $table->string('instruction_name_ar');
             $table->timestamps();
         });
     }

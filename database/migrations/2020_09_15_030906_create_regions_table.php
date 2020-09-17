@@ -24,6 +24,7 @@ class CreateRegionsTable extends Migration
             $table->unsignedBigInteger('province_id');
             $table->foreign('province_id')->references('id')->on('provinces')->onDelete('cascade');
             $table->string('region_name');
+            $table->string('region_name_ar');
             $table->timestamps();
         });
     }

@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCountriesTable extends Migration
+class CreateOrderActionsTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $table = 'countries';
+    public $table = 'order_actions';
 
     /**
      * Run the migrations.
@@ -21,8 +21,10 @@ class CreateCountriesTable extends Migration
     {
         Schema::create($this->table, function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('country_name');
-            $table->string('country_name_ar');
+            $table->unsignedBigInteger('order_id');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+            $table->unsignedBigInteger('action_id');
+            $table->foreign('action_id')->references('id')->on('actions')->onDelete('cascade');
             $table->timestamps();
         });
     }
